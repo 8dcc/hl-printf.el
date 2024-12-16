@@ -1,8 +1,8 @@
-;;; hl-printf.el --- Highlight "printf" format specifiers in Emacs -*- lexical-binding: t; -*-
+;;; hl-printf.el --- Minor mode for highlighting "printf" format specifiers -*- lexical-binding: t; -*-
 
 ;; Author: 8dcc <8dcc.git@gmail.com>
 ;; Version: 1.0.0
-;; Package-Requires: TODO
+;; Package-Requires: ((emacs "24.1"))
 ;; Keywords: c, faces
 ;; URL: https://github.com/8dcc/hl-printf.el
 
@@ -82,9 +82,19 @@
        "n"
        "%"))
   "Regular expression used for matching \"printf\" format specifiers."
+  :group 'hl-printf
   :type '(regexp))
 
-;; TODO: Highlight the regexp
+;;;###autoload
+(define-minor-mode hl-printf-mode
+  "Highlight \"printf\" format specifiers in strings."
+  :lighter ""
+  :group 'hl-printf
+  (if hl-printf-mode
+      (font-lock-add-keywords
+       nil `((,hl-printf-regexp . font-lock-escape-face)))
+    (font-lock-remove-keywords
+     nil `((,hl-printf-regexp . font-lock-escape-face)))))
 
 (provide 'hl-printf)
 ;;; hl-printf.el ends here
