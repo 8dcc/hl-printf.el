@@ -2,7 +2,7 @@
 
 ;; Author: 8dcc <8dcc.git@gmail.com>
 ;; Version: 1.0.0
-;; Package-Requires: ((emacs "24.1"))
+;; Package-Requires: ((emacs "24.1") (compat "29.1.0.1"))
 ;; Keywords: c, faces
 ;; URL: https://github.com/8dcc/hl-printf.el
 
@@ -85,6 +85,15 @@
   :group 'hl-printf
   :type '(regexp))
 
+(defface hl-printf-face
+  '((t :inherit font-lock-escape-face))
+  "Face used for `hl-printf' mode."
+  :group 'hl-printf)
+
+;; FIXME: Only highlight the regexp in strings, similarly to `hl-todo-mode'. We
+;; would probably have to use a function instead of a string when calling
+;; `font-lock-add-keywords'.
+
 ;;;###autoload
 (define-minor-mode hl-printf-mode
   "Highlight \"printf\" format specifiers in strings."
@@ -92,9 +101,9 @@
   :group 'hl-printf
   (if hl-printf-mode
       (font-lock-add-keywords
-       nil `((,hl-printf-regexp . font-lock-escape-face)))
+       nil `((,hl-printf-regexp . hl-printf-face)))
     (font-lock-remove-keywords
-     nil `((,hl-printf-regexp . font-lock-escape-face)))))
+     nil `((,hl-printf-regexp . hl-printf-face)))))
 
 (provide 'hl-printf)
 ;;; hl-printf.el ends here
