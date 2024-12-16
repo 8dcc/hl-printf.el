@@ -106,11 +106,10 @@ Returns t if the match is found inside a string, or nil otherwise."
   "Highlight \"printf\" format specifiers in strings."
   :lighter ""
   :group 'hl-printf
-  (if hl-printf-mode
-      (font-lock-add-keywords
-       nil '((hl-printf--search . hl-printf-face)))
-    (font-lock-remove-keywords
-     nil '((hl-printf--search . hl-printf-face)))))
+  (let ((keywords '((hl-printf--search 0 'hl-printf-face prepend))))
+    (if hl-printf-mode
+        (font-lock-add-keywords nil keywords)
+      (font-lock-remove-keywords nil keywords))))
 
 (provide 'hl-printf)
 ;;; hl-printf.el ends here
