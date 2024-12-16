@@ -90,9 +90,16 @@
   "Face used for `hl-printf' mode."
   :group 'hl-printf)
 
-;; FIXME: Only highlight the regexp in strings, similarly to `hl-todo-mode'. We
-;; would probably have to use a function instead of a string when calling
-;; `font-lock-add-keywords'.
+(defun hl-printf--point-inside-string-p (&optional pos)
+  "Return t if POS is located inside a string literal according to syntax state.
+The POS argument defaults to point."
+  (not (null (nth 3 (syntax-ppss pos)))))
+
+(defun hl-printf--search (limit)
+  "Search for `hl-printf-regexp' up to LIMIT.
+Returns t if the match is found inside a string, or nil otherwise."
+  (re-search-forward hl-printf-regexp limit t)
+  (hl-printf--point-inside-string-p))
 
 ;;;###autoload
 (define-minor-mode hl-printf-mode
@@ -101,9 +108,9 @@
   :group 'hl-printf
   (if hl-printf-mode
       (font-lock-add-keywords
-       nil `((,hl-printf-regexp . hl-printf-face)))
+       nil '((hl-printf--search . hl-printf-face)))
     (font-lock-remove-keywords
-     nil `((,hl-printf-regexp . hl-printf-face)))))
+     nil '((hl-printf--search . hl-printf-face)))))
 
 (provide 'hl-printf)
 ;;; hl-printf.el ends here
