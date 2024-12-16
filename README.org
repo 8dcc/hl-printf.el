@@ -1,0 +1,23 @@
+#+TITLE: hl-printf.el
+#+AUTHOR: 8dcc
+#+OPTIONS: toc:2
+#+STARTUP: nofold
+
+*Minor mode for highlighting =printf= format specifiers in Emacs.*
+
+* Installing
+
+This package is not available in Melpa, but you can install it with
+=package-vc-install=:
+
+#+begin_src emacs-lisp
+(package-vc-install "https://github.com/8dcc/hl-printf.el")
+#+end_src
+
+Alternatively, if you are using [[https://github.com/radian-software/straight.el][straight.el]], you can specify the recipe with
+=straight-use-package=:
+
+#+begin_src emacs-lisp
+(straight-use-package
+ '(hl-printf :type git :host github :repo "8dcc/hl-printf.el"))
+#+end_src
