@@ -111,7 +111,11 @@ Returns t if the match is found inside a string, or nil otherwise."
   (let ((keywords '((hl-printf--search 0 'hl-printf-face prepend))))
     (if hl-printf-mode
         (font-lock-add-keywords nil keywords)
-      (font-lock-remove-keywords nil keywords))))
+      (font-lock-remove-keywords nil keywords)))
+  (when font-lock-mode
+    (if (fboundp 'font-lock-flush)
+        (font-lock-flush)
+      (with-no-warnings (font-lock-fontify-buffer)))))
 
 (provide 'hl-printf)
 ;;; hl-printf.el ends here
