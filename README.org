@@ -3,7 +3,7 @@
 #+OPTIONS: toc:2
 #+STARTUP: nofold
 
-*Minor mode for highlighting =printf= format specifiers in Emacs.*
+*Minor mode for highlighting 'printf' format specifiers in Emacs.*
 
 * Installing
 
