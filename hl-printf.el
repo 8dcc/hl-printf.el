@@ -34,6 +34,7 @@
   :link '(url-link :tag "Homepage" "https://github.com/8dcc/hl-printf.el")
   :link '(emacs-library-link :tag "Library Source" "hl-printf.el")
   :group 'faces
+  :tag "Highlight printf"
   :prefix "hl-printf-")
 
 ;; NOTE: Technically, precision specifiers are only valid for some conversion
@@ -83,12 +84,14 @@
        "%"))
   "Regular expression used for matching \"printf\" format specifiers."
   :group 'hl-printf
+  :tag "Highlight printf regexp"
   :type '(regexp))
 
 (defface hl-printf-face
   '((t :inherit font-lock-keyword-face))
   "Face used for `hl-printf' mode."
-  :group 'hl-printf)
+  :group 'hl-printf
+  :tag "Highlight printf regexp")
 
 (defun hl-printf--point-inside-string-p (&optional pos)
   "Return t if POS is located inside a string literal according to syntax state.
