@@ -21,3 +21,29 @@ Alternatively, if you are using [[https://github.com/radian-software/straight.el
 (straight-use-package
  '(hl-printf :type git :host github :repo "8dcc/hl-printf.el"))
 #+end_src
+
+* Customizing
+
+The following variables can be customized.
+
+- Variable: hl-printf-regexp ::
+
+  Regular expression used to highlight format specifiers inside strings.
+
+  For example, to highlight escape sequences in strings, you can add the
+  following to your init file:
+
+  #+begin_src emacs-lisp
+  (setq hl-printf-regexp
+        (rx (or (regexp hl-printf-regexp)
+                (seq "\\"
+                     (or "a" "b" "e" "f" "n" "r" "t" "v" "\\" "'" "\"" "?"
+                         (repeat 1 3 digit)
+                         (seq "x" (one-or-more hex-digit))
+                         (seq "u" (repeat 4 hex-digit))
+                         (seq "U" (repeat 8 hex-digit)))))))
+  #+end_src
+
+- User Option: hl-printf-face ::
+
+  Face used when highlighting format specifiers.
