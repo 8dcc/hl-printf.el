@@ -86,7 +86,7 @@
   :type '(regexp))
 
 (defface hl-printf-face
-  '((t :inherit font-lock-escape-face))
+  '((t :inherit font-lock-keyword-face))
   "Face used for `hl-printf' mode."
   :group 'hl-printf)
 
@@ -105,6 +105,8 @@ Returns t if the match is found inside a string, or nil otherwise."
 (define-minor-mode hl-printf-mode
   "Highlight \"printf\" format specifiers in strings."
   :lighter ""
+  :init-value nil
+  :global nil
   :group 'hl-printf
   (let ((keywords '((hl-printf--search 0 'hl-printf-face prepend))))
     (if hl-printf-mode
