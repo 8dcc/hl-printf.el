@@ -98,8 +98,8 @@ The POS argument defaults to point."
 (defun hl-printf--search (limit)
   "Search for `hl-printf-regexp' up to LIMIT.
 Returns t if the match is found inside a string, or nil otherwise."
-  (re-search-forward hl-printf-regexp limit t)
-  (hl-printf--point-inside-string-p))
+  (and (re-search-forward hl-printf-regexp limit t)
+       (hl-printf--point-inside-string-p)))
 
 ;;;###autoload
 (define-minor-mode hl-printf-mode
