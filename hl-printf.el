@@ -41,10 +41,10 @@
 ;; specifiers. We ignore this (just like vim does).
 (defcustom hl-printf-regexp
   (rx
-   ;; Initial format character (mandatory)
+   ;; Initial format character (mandatory).
    "%"
 
-   ;; Flags (optional)
+   ;; Flags.
    (opt
     (or "-"
         "+"
@@ -52,17 +52,19 @@
         "#"
         "0"))
 
-   ;; Minimum field width (optional)
+   ;; Minimum field width. Zero is not allowed, since it's part of the "Flags".
    (opt
-    (or "*" (any "1-9")))
+    (or "*"
+        (one-or-more (any "1-9"))))
 
-   ;; Precission (optional)
+   ;; Precission. Zero is allowed after the dot.
    (opt
     (seq "."
          (opt
-          (or "*" digit))))
+          (or "*"
+              (one-or-more digit)))))
 
-   ;; Length modifier (optional)
+   ;; Length modifier.
    (opt
     (or (repeat 1 2 "h")
         (repeat 1 2 "l")
@@ -71,7 +73,7 @@
         "t"
         "L"))
 
-   ;; Conversion specifier (mandatory)
+   ;; Conversion specifier (mandatory).
    (or "d" "i"
        "o" "u" "x" "X"
        "f" "F"
