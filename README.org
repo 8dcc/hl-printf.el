@@ -5,6 +5,11 @@
 
 *Minor mode for highlighting 'printf' format specifiers in Emacs.*
 
+This package provides a minor mode for highlighting =printf= format specifiers,
+such as =%s=, =%lld= or =%-5.3f=. This package is meant for C-like modes, but it can
+be used on any major mode (that can detect strings with the =syntax-ppss= Emacs
+function).
+
 * Installing
 
 This package is not available in Melpa, but you can install it with
