@@ -12,14 +12,26 @@ function).
 
 * Installing
 
-This package is not available in Melpa, but you can install it with
-=package-vc-install=:
+This package is available in [[https://melpa.org/][Melpa]]. You can install it with
+=M-x package-install RET hl-printf RET=, and then =require= it:
+
+#+begin_src emacs-lisp
+(require 'hl-printf)
+#+end_src
+
+Or with =use-package=:
+
+#+begin_src emacs-lisp
+(use-package hl-printf)
+#+end_src
+
+Alternatively, you can install it with =package-vc-install=:
 
 #+begin_src emacs-lisp
 (package-vc-install "https://github.com/8dcc/hl-printf.el")
 #+end_src
 
-Alternatively, if you are using [[https://github.com/radian-software/straight.el][straight.el]], you can specify the recipe with
+Lastly, if you are using [[https://github.com/radian-software/straight.el][straight.el]], you can specify the recipe with
 =straight-use-package=:
 
 #+begin_src emacs-lisp
