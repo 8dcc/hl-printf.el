@@ -120,7 +120,7 @@ Returns t if the match is found inside a string, or nil otherwise."
   (when font-lock-mode
     (if (fboundp 'font-lock-flush)
         (font-lock-flush)
-      (with-no-warnings (font-lock-fontify-buffer)))))
+      (font-lock-fontify-buffer))))
 
 (provide 'hl-printf)
 ;;; hl-printf.el ends here
