@@ -118,9 +118,7 @@ Returns t if the match is found inside a string, or nil otherwise."
         (font-lock-add-keywords nil keywords)
       (font-lock-remove-keywords nil keywords)))
   (when font-lock-mode
-    (if (fboundp 'font-lock-flush)
-        (font-lock-flush)
-      (font-lock-fontify-buffer))))
+    (font-lock-flush)))
 
 (provide 'hl-printf)
 ;;; hl-printf.el ends here
