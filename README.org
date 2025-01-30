@@ -64,3 +64,12 @@ The following variables can be customized.
 - User Option: hl-printf-face ::
 
   Face used when highlighting format specifiers.
+
+* Screenshots
+
+Here are some screenshots of the package, using my fork of Protesilaos'
+[[https://github.com/protesilaos/modus-themes][modus-themes]].
+
+[[file:assets/ss-dark.png]]
+
+[[file:assets/ss-light.png]]
