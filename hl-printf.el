@@ -55,7 +55,8 @@
    ;; Minimum field width. Zero is not allowed, since it's part of the "Flags".
    (opt
     (or "*"
-        (one-or-more (any "1-9"))))
+        (seq (one-or-more (any "1-9"))
+             (zero-or-more (any digit)))))
 
    ;; Precission. Zero is allowed after the dot.
    (opt
